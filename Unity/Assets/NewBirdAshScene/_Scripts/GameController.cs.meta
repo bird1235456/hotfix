@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 34764e1dd62d04ddd8e81057c04135c0
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - hazard: {fileID: 100002, guid: 7e00d67b669bd43548386ef8053c45b0, type: 2}
+  - scoreText: {instanceID: 0}
+  - restartText: {instanceID: 0}
+  - gameOverText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

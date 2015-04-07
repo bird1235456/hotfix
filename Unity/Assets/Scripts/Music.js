@@ -16,10 +16,10 @@ function Awake() {
 
 function Start() {
 	playClip(0);
-	yield WaitForSeconds (audio.clip.length);
+	yield WaitForSeconds (GetComponent.<AudioSource>().clip.length);
 	while(true) {
 		playRandomClip();
-		yield WaitForSeconds (audio.clip.length);
+		yield WaitForSeconds (GetComponent.<AudioSource>().clip.length);
 	}
 }
 
@@ -33,6 +33,6 @@ function playRandomClip() {
 
 function playClip(num: int) {
 	lastClipNum = num;
-	audio.clip = clips[num];
-	audio.Play();
+	GetComponent.<AudioSource>().clip = clips[num];
+	GetComponent.<AudioSource>().Play();
 }

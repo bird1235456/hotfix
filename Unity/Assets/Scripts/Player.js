@@ -78,7 +78,7 @@ function Start () {
 	currentSpeedMult = 1;
 	isDying = false;
 	
-	timebonusObject.renderer.enabled = PlayerData.canSlowDownTime();
+	timebonusObject.GetComponent.<Renderer>().enabled = PlayerData.canSlowDownTime();
 	timebonusSprite = timebonusObject.GetComponent('OTSprite') as OTSprite;
 
 	nbBonusJumps = PlayerData.getNbBonusJumps();
@@ -100,12 +100,12 @@ function Start () {
 	jumpOnAnEnemyHelp = GameObject.Find('jumpOnAnEnemy');
 	releaseNewCloneHelp = GameObject.Find('releaseNewClone');
 	
-	clickOrPressSpaceHelp.renderer.enabled = false;
-	jumpOnAnEnemyHelp.renderer.enabled = false;
-	releaseNewCloneHelp.renderer.enabled = false;
+	clickOrPressSpaceHelp.GetComponent.<Renderer>().enabled = false;
+	jumpOnAnEnemyHelp.GetComponent.<Renderer>().enabled = false;
+	releaseNewCloneHelp.GetComponent.<Renderer>().enabled = false;
 	
 	if (PlayerData.isMagnet()) {
-		magnetObject.collider.enabled = true;
+		magnetObject.GetComponent.<Collider>().enabled = true;
 		var scale: float = PlayerData.magnetSize();
 		magnetObject.transform.localScale = Vector3(scale, scale, scale);
 	}
@@ -115,9 +115,9 @@ function refreshClones() {
 	var nbTotalClones: int = PlayerData.getNbBonusClones();
 	for (var i: int = 0; i < clones.length; i++) {
 		if (i >= nbTotalClones) {
-			clones[i].renderer.enabled = false;
+			clones[i].GetComponent.<Renderer>().enabled = false;
 		} else {
-			clones[i].renderer.enabled = true;
+			clones[i].GetComponent.<Renderer>().enabled = true;
 			clonesSprite[i].alpha = i >= nbBonusClones ? 0.3 : 1;
 		}
 	}
@@ -131,7 +131,7 @@ function chooseAnimation(name: String) {
 }
 
 function Update () {
-	clickOrPressSpaceHelp.renderer.enabled = (Time.time - startTime) < 10;
+	clickOrPressSpaceHelp.GetComponent.<Renderer>().enabled = (Time.time - startTime) < 10;
 
 	if (dragAndDropMode) {
 		processDragAndDropMode();
@@ -173,7 +173,7 @@ function processDragAndDropMode() {
 	sprite.position = diff + dragAndDropStartingPosition;
 	var timeClock: float = Time.time;
 	timeClock -= Mathf.Floor(timeClock);
-	this.renderer.enabled = timeClock < 0.25 || (timeClock > 0.5 && timeClock < 0.75);
+	this.GetComponent.<Renderer>().enabled = timeClock < 0.25 || (timeClock > 0.5 && timeClock < 0.75);
 }
 
 function processSlowDownBonus() {
@@ -441,7 +441,7 @@ function noGroundUnder() {
 }
 
 function playerDied() {
-	this.collider.enabled = false;
+	this.GetComponent.<Collider>().enabled = false;
 	if (nbBonusClones > 0) {
 		new OTSound('Clone');
 		nbBonusClones--;
@@ -449,8 +449,8 @@ function playerDied() {
 		dragAndDropMode = true;
 		dragAndDropStartingPosition = sprite.position;
 		dragAndDropStartingTime = Time.time;
-		releaseNewCloneHelp.renderer.enabled = true;
-		magnetObject.collider.enabled = false;
+		releaseNewCloneHelp.GetComponent.<Renderer>().enabled = true;
+		magnetObject.GetComponent.<Collider>().enabled = false;
 		level.setCloneMode(true);
 	} else {
 		isDying = true;
@@ -465,17 +465,17 @@ function unlockDragAndDrop() {
 	}
 	hasCollidedWeakZone = false;
 	hasCollidedTouchAndDie = false;
-	releaseNewCloneHelp.renderer.enabled = false;
-	this.collider.enabled = true;
+	releaseNewCloneHelp.GetComponent.<Renderer>().enabled = false;
+	this.GetComponent.<Collider>().enabled = true;
 	dragAndDropMode = false;
 	level.setCloneMode(false);
 	onGround = false;
 	isThereAnyGroundUnderScript.disabled = false;
-	this.renderer.enabled = true;
+	this.GetComponent.<Renderer>().enabled = true;
 	fallSpeed = 0;
 	currentSpeedMult = 0;
 	if (PlayerData.isMagnet()) {
-		magnetObject.collider.enabled = true;
+		magnetObject.GetComponent.<Collider>().enabled = true;
 	}
 }
 

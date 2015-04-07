@@ -1,8 +1,8 @@
 #pragma strict
 
 function Start () {
-	GameObject.Find('nbcommits').guiText.text = PlayerData.getCoins() + (PlayerData.getCoins() > 1 ? " commits" : " commit") + " (total is now: " + PlayerData.getTotalCoins() + ")";
-	GameObject.Find('nbstargazers').guiText.text = PlayerData.getStargazers() + (PlayerData.getStargazers() > 1 ? " stargazers" : " stargazer");
+	GameObject.Find('nbcommits').GetComponent.<GUIText>().text = PlayerData.getCoins() + (PlayerData.getCoins() > 1 ? " commits" : " commit") + " (total is now: " + PlayerData.getTotalCoins() + ")";
+	GameObject.Find('nbstargazers').GetComponent.<GUIText>().text = PlayerData.getStargazers() + (PlayerData.getStargazers() > 1 ? " stargazers" : " stargazer");
 	
 	var stargazers : int = PlayerData.getStargazers();
 	
@@ -14,6 +14,6 @@ function Start () {
     yield www;
     var scores: String[] = www.text.Split(':'[0]);
     
-    GameObject.Find('ranking24').guiText.text = scores[0];
-    GameObject.Find('rankingOverall').guiText.text = scores[1];
+    GameObject.Find('ranking24').GetComponent.<GUIText>().text = scores[0];
+    GameObject.Find('rankingOverall').GetComponent.<GUIText>().text = scores[1];
 }

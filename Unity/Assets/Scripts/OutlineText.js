@@ -9,7 +9,7 @@ function Start () {
 	canOutline = (Application.platform != RuntimePlatform.OSXWebPlayer);
 	
 	if (!canOutline) {
-		guiText.material.color = Color.black;
+		GetComponent.<GUIText>().material.color = Color.black;
 	}
 }
 
@@ -32,7 +32,7 @@ function initialize() {
 function cloneGUI(color: Color, position: Vector3) {
 	
 	var obj: GameObject = Instantiate(initialState, Vector3(0, 0, 0), Quaternion.identity);
-	obj.guiText.material.color = color;
+	obj.GetComponent.<GUIText>().material.color = color;
 	Destroy(obj.GetComponent('OutlineText'));
 	for (var i: int = 0; i < forbiddenComponents.length; i++) {
 		Destroy(obj.GetComponent(forbiddenComponents[i]));
@@ -49,6 +49,6 @@ function OnGUI () {
 		initialize();
 	}
 	for (var child : Transform in transform) {
-	    child.guiText.text = guiText.text;
+	    child.GetComponent.<GUIText>().text = GetComponent.<GUIText>().text;
 	}
 }

@@ -43,9 +43,9 @@ function selectFeature(name: String) {
 	var cost: int = getCostFromLevel(level);
 	var upgrade_button_visible: boolean = false;
 	var upgrade_disabled_visible: boolean = false;
-	feature_state.guiText.text = level == 0 ? '' : texts[level - 1];
-	feature_cost.guiText.text = cost.ToString();
-	coincommit.renderer.enabled = true;
+	feature_state.GetComponent.<GUIText>().text = level == 0 ? '' : texts[level - 1];
+	feature_cost.GetComponent.<GUIText>().text = cost.ToString();
+	coincommit.GetComponent.<Renderer>().enabled = true;
 	
 	upgrade_button_visible = PlayerData.getTotalCoins() >= cost;
 	upgrade_disabled_visible = !upgrade_button_visible;
@@ -53,13 +53,13 @@ function selectFeature(name: String) {
 	if (level == 3) {
 		upgrade_button_visible = false;
 		upgrade_disabled_visible = false;
-		coincommit.renderer.enabled = false;
-		feature_cost.guiText.text = 'MAXIMUM';
+		coincommit.GetComponent.<Renderer>().enabled = false;
+		feature_cost.GetComponent.<GUIText>().text = 'MAXIMUM';
 	}
 	
-	upgrade_button.renderer.enabled = upgrade_button_visible;
-	upgrade_button.collider.enabled = upgrade_button_visible;
-	upgrade_disabled.renderer.enabled = upgrade_disabled_visible;
+	upgrade_button.GetComponent.<Renderer>().enabled = upgrade_button_visible;
+	upgrade_button.GetComponent.<Collider>().enabled = upgrade_button_visible;
+	upgrade_disabled.GetComponent.<Renderer>().enabled = upgrade_disabled_visible;
 	lastFeature = name;
 }
 
@@ -84,17 +84,17 @@ function show() {
 
 function changeVisibility(visible: boolean) {
 	for (var child : Transform in transform) {
-	    if (child.guiText) {
-	    	child.guiText.enabled = visible;
+	    if (child.GetComponent.<GUIText>()) {
+	    	child.GetComponent.<GUIText>().enabled = visible;
 	    	for (var child2 : Transform in child) {
-	    		child2.guiText.enabled = visible;
+	    		child2.GetComponent.<GUIText>().enabled = visible;
 	    	}
 	    } else {
-	    	child.renderer.enabled = visible;
+	    	child.GetComponent.<Renderer>().enabled = visible;
 	    }
 	    
-	    if (child.collider) {
-	    	child.collider.enabled = false;
+	    if (child.GetComponent.<Collider>()) {
+	    	child.GetComponent.<Collider>().enabled = false;
 	    }
 	}
 }

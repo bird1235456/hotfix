@@ -6,5 +6,5 @@ function Start () {
 }
 
 function OnGUI () {
-	guiText.text = PlayerData.getTotalCoins().ToString() + (complete ? (PlayerData.getTotalCoins() > 1 ? ' commits' : ' commit') : '');
+	GetComponent.<GUIText>().text = PlayerData.getTotalCoins().ToString() + (complete ? (PlayerData.getTotalCoins() > 1 ? ' commits' : ' commit') : '');
 }

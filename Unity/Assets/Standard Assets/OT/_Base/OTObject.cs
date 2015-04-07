@@ -184,7 +184,7 @@ public class OTObject : MonoBehaviour
 		get
 		{
 			if (_renderer == null)
-				_renderer = renderer;
+				_renderer = GetComponent<Renderer>();
 			return _renderer;
 		}
 	}
@@ -1622,16 +1622,16 @@ public class OTObject : MonoBehaviour
             Update();
         }
 		
-		if (protoType.collider !=null && protoType.collider is BoxCollider)
+		if (protoType.GetComponent<Collider>() !=null && protoType.GetComponent<Collider>() is BoxCollider)
 		{
-			(collider as BoxCollider).center = (protoType.collider as BoxCollider).center;
-			(collider as BoxCollider).size = (protoType.collider as BoxCollider).size;
+			(GetComponent<Collider>() as BoxCollider).center = (protoType.GetComponent<Collider>() as BoxCollider).center;
+			(GetComponent<Collider>() as BoxCollider).size = (protoType.GetComponent<Collider>() as BoxCollider).size;
 		}
 		else
-		if (protoType.collider !=null && protoType.collider is SphereCollider)
+		if (protoType.GetComponent<Collider>() !=null && protoType.GetComponent<Collider>() is SphereCollider)
 		{
-			(collider as SphereCollider).center = (protoType.collider as SphereCollider).center;
-			(collider as SphereCollider).radius = (protoType.collider as SphereCollider).radius;
+			(GetComponent<Collider>() as SphereCollider).center = (protoType.GetComponent<Collider>() as SphereCollider).center;
+			(GetComponent<Collider>() as SphereCollider).radius = (protoType.GetComponent<Collider>() as SphereCollider).radius;
 		}
 	}
 
@@ -1963,7 +1963,7 @@ public class OTObject : MonoBehaviour
         if (mr == null)
 		{
             mr = gameObject.AddComponent<MeshRenderer>();
-			_renderer = renderer;
+			_renderer = GetComponent<Renderer>();
 		}
 
         // check if we have to generate a mesh for this object

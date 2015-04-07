@@ -2,5 +2,5 @@
 
 
 function OnGUI () {
-	guiText.text = PlayerData.getCoins().ToString();
+	GetComponent.<GUIText>().text = PlayerData.getCoins().ToString();
 }

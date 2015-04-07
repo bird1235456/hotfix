@@ -87,6 +87,6 @@ function initialize(x1: float, x2: float) {
 	originPosition = sprite.position;
 	setRandomPosition();
 	Update();
-	this.renderer.enabled = true;
+	this.GetComponent.<Renderer>().enabled = true;
 	initialized = true;
 }

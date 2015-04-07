@@ -15,11 +15,11 @@ function Start () {
 
 function Update () {
 	if (goingLeft) {
-		this.renderer.enabled = featureListObject.transform.position.x < -5;
+		this.GetComponent.<Renderer>().enabled = featureListObject.transform.position.x < -5;
 	} else {
-		this.renderer.enabled = featureListObject.transform.position.x > -55;
+		this.GetComponent.<Renderer>().enabled = featureListObject.transform.position.x > -55;
 	}
-	this.collider.enabled = this.renderer.enabled;
+	this.GetComponent.<Collider>().enabled = this.GetComponent.<Renderer>().enabled;
 	if (isMoving) {
 		xProgress += Time.deltaTime * 2;
 		if (xProgress > 1) {

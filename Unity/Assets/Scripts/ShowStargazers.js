@@ -5,5 +5,5 @@ function Start () {
 }
 
 function OnGUI () {
-	guiText.text = PlayerData.getStargazers().ToString();
+	GetComponent.<GUIText>().text = PlayerData.getStargazers().ToString();
 }

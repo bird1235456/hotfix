@@ -36,8 +36,8 @@ function Start () {
 		
 	}
 	
-	leftEye.renderer.enabled = true;
-	rightEye.renderer.enabled = true;
+	leftEye.GetComponent.<Renderer>().enabled = true;
+	rightEye.GetComponent.<Renderer>().enabled = true;
 	
 	playerObject = GameObject.Find('player');
 	player = playerObject.GetComponent('Player') as Player;
@@ -102,8 +102,8 @@ function processForks() {
 	if (player.isOnDragAndDropMode()) {
 		if (isBlinking) {
 			sprite.PlayOnce('Watching');
-			leftEye.renderer.enabled = true;
-			rightEye.renderer.enabled = true;
+			leftEye.GetComponent.<Renderer>().enabled = true;
+			rightEye.GetComponent.<Renderer>().enabled = true;
 			sprite.position = originalPosition;
 			isBlinking = false;
 		}
@@ -120,8 +120,8 @@ function processForks() {
 			waitedForShoot = 0;
 			blinkingSince = 0;
 			isBlinking = true;
-			leftEye.renderer.enabled = false;
-			rightEye.renderer.enabled = false;
+			leftEye.GetComponent.<Renderer>().enabled = false;
+			rightEye.GetComponent.<Renderer>().enabled = false;
 			sprite.PlayOnce('Blinking');
 		}
 		if (isBlinking) {
@@ -136,8 +136,8 @@ function processForks() {
 			isBlinking = false;
 			waitedForShoot = 0;
 			blinkingSince = 0;
-			leftEye.renderer.enabled = true;
-			rightEye.renderer.enabled = true;
+			leftEye.GetComponent.<Renderer>().enabled = true;
+			rightEye.GetComponent.<Renderer>().enabled = true;
 			sprite.PlayOnce('Watching');
 			var fork1: OTSprite = GameObject.Instantiate(fork, Vector3(leftEye.position.x, leftEye.position.y, 10), Quaternion.identity).GetComponent('OTSprite') as OTSprite;
 			var fork2: OTSprite = GameObject.Instantiate(fork, Vector3(rightEye.position.x, rightEye.position.y, 10), Quaternion.identity).GetComponent('OTSprite') as OTSprite;

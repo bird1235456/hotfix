@@ -36,7 +36,7 @@ function Update () {
 	sprite.position += Vector2(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle)) * speed * Time.deltaTime;
 	distanceCovered += speed * Time.deltaTime;
 	if (!isAutoDestroying && distanceCovered > maxDistance) {
-		this.collider.enabled = false;
+		this.GetComponent.<Collider>().enabled = false;
 		isAutoDestroying = true;
 		originalSpeedWhenAutoDestroying = speed;
 	}
